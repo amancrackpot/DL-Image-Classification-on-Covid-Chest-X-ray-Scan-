@@ -1,10 +1,10 @@
 # Image-Classification-on-Covid-Chest-X-ray-Scan
-### Simple Web App available at: https://chest-scan-classifier-web-app.herokuapp.com/
-![demo](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/webapp.gif) #### In this I have tried to bulid a model that can classify a chest X-ray scan from under-mentioned classes:
+### In this I have tried to bulid a model that can classify a chest X-ray scan from under-mentioned classes:
 - Normal
 - Covid
 - Viral Pneumonia
-
+### Simple Web App available at: https://chest-scan-classifier-web-app.herokuapp.com/
+![demo](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/webapp.gif)
 
 
 #### The code needed to train the model is detailed in here https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/covid-classification-resnet50.ipynb
