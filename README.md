@@ -9,7 +9,8 @@ I have used transfer learning by making use of pre-trained resnet50 and finetuni
 ### Simple Web App at: https://chest-scan-classifier-web-app.herokuapp.com/
 ![demo](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/webapp.gif)
 
-
+#### The code needed to recreate the training data 
+and train the model is detailed in the https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/covid-classification-resnet50.ipynb
 
 ## Results on test data
 ![image](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/stats.png)
