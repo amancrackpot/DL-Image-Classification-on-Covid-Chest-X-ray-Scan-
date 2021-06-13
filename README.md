@@ -10,4 +10,5 @@ I have used transfer learning by making use of pre-trained resnet50 and finetuni
 
 
 
-## Results
+## Results on test data
+![image](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/stats.png)
