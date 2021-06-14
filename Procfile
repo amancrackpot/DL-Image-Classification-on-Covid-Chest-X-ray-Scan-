@@ -1,1 +1,1 @@
-web: gunicorn app:app
+  web: voila --port=$PORT --no-browser --enable_nbextensions=True Deployment_fastai.ipynb --debug
