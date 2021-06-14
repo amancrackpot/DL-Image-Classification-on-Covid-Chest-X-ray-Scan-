@@ -55,7 +55,7 @@ async def upload(request):
 	
 @app.route("/classify-url", methods=["POST"])
 async def classify_url(request):
-    url = request.form["url"]
+    url = await request.url
 #    url =  data['url']
     response = requests.get(url)
 	
