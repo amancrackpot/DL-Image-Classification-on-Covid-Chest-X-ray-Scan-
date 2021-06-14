@@ -6,6 +6,7 @@ from starlette.templating import Jinja2Templates
 import uvicorn, aiohttp, asyncio
 from io import BytesIO, StringIO
 from fastai.vision.all import *
+import requests
 import base64
 import pdb
 
@@ -54,7 +55,8 @@ async def upload(request):
 	
 @app.route("/classify-url", methods=["POST"])
 async def classify_url(request):
-    url = request.form["url"]
+    data = await request.form()
+    url =  data['file'].filename
     response = await requests.get(url)
 	
     results = model_predict(response.content)
