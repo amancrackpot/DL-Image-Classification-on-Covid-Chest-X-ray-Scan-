@@ -16,10 +16,10 @@ from flask import Flask, redirect, url_for, render_template, request
 # Define a flask app
 app = Flask(__name__)
 
-path = Path(__file__).parent
+path = Path(__file__).parent.parent
 classes = ['Normal', 'Covid', 'Viral Pneumonia']
 
-learn = load_learner(path/'saved'/'export.pkl')
+learn = load_learner(path/'export.pkl')
 
 	
 def model_predict(img):
