@@ -46,7 +46,8 @@ async def model_predict(img_b):
 
 @app.route('/upload', methods=["POST"])
 async def upload(request):
-    img_b = await request.files['file'].read()
+    data = await request.form()
+    img_b = await (data["file"].read())
     result = await model_predict(img_b)
 
     return templates.TemplateResponse('result.html', result)
