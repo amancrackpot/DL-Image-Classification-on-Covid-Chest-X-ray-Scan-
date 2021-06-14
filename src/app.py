@@ -11,7 +11,7 @@ import pdb
 
 export_file_name = 'export.pkl'
 classes = ['Normal', 'Covid', 'Viral Pneumonia']
-path = Path(__file__).parent.parent
+path = Path(__file__).parent
 
 templates = Jinja2Templates(directory='src/templates')
 app = Starlette()
@@ -21,7 +21,7 @@ app.mount('/static', StaticFiles(directory='src/static'))
 async def setup_learner():
 #     await download_file(export_file_url, path/'models'/export_file_name)
     defaults.device = torch.device('cpu')
-    learn = load_learner(path/export_file_name)
+    learn = load_learner(path/'saved'/export_file_name)
     return learn
 
 loop = asyncio.get_event_loop()
