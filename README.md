@@ -3,7 +3,7 @@
 - Normal
 - Covid
 - Viral Pneumonia
-### Simple Web App available at: https://chest-scan-classifier-web-app.herokuapp.com/
+### Simple Web App available at: https://xray-scan-classifier.onrender.com/
 ![demo](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/webapp.gif)
 
 
