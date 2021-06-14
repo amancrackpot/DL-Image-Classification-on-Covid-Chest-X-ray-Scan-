@@ -1,70 +1,69 @@
-from __future__ import division, print_function
-import sys
-import os
-import glob
-import re
-from pathlib import Path
-from io import BytesIO
-import base64
-import requests
-
+from starlette.applications import Starlette
+from starlette.responses import HTMLResponse
+from starlette.staticfiles import StaticFiles
+from starlette.middleware.cors import CORSMiddleware
+from starlette.templating import Jinja2Templates
+import uvicorn, aiohttp, asyncio
+from io import BytesIO, StringIO
 from fastai.vision.all import *
+import base64
+import pdb
 
-# Flask utils
-from flask import Flask, redirect, url_for, render_template, request
-
-# Define a flask app
-app = Flask(__name__)
-
-path = Path(__file__).parent.parent
+export_file_name = 'export.pkl'
 classes = ['Normal', 'Covid', 'Viral Pneumonia']
+path = Path(__file__).parent.parent
 
-learn = load_learner(path/'export.pkl')
+templates = Jinja2Templates(directory='src/templates')
+app = Starlette()
+app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
+app.mount('/static', StaticFiles(directory='src/static'))
+
+async def setup_learner():
+#     await download_file(export_file_url, path/'models'/export_file_name)
+    defaults.device = torch.device('cpu')
+    learn = load_learner(path/export_file_name)
+    return learn
+
+loop = asyncio.get_event_loop()
+tasks = [asyncio.ensure_future(setup_learner())]
+learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
+loop.close()
 
 	
-def model_predict(img):
-    img = PILImage.create(BytesIO(img))
+async def model_predict(img_b):
+    img = PILImage.create(BytesIO(img_b))
     outputs = learn.predict(img)[2].numpy()
     formatted_outputs = [f"{i*100:.2f}" for i in outputs]
     pred_probs = zip(classes, map(str, formatted_outputs))
-	
+
     img_bytes  = img.to_bytes_format()
     img_data = base64.b64encode(img_bytes).decode()
-    
+
     result = {"probs":pred_probs, "image":img_data}
-    return render_template('result.html', result=result)
+    return result
    
 
-@app.route('/', methods=['GET', "POST"])
-def index():
-    # Main page
-    return render_template('index.html')
 
+@app.route('/upload', methods=["POST"])
+async def upload():
+    img_b = await request.files['file'].read()
+    result = await model_predict(img_b)
 
-@app.route('/upload', methods=["POST", "GET"])
-def upload():
-    if request.method == 'POST':
-        # Get the file from post request
-        img = request.files['file'].read()
-        if img != None:
-        # Make prediction
-            preds = model_predict(img)
-            return preds
-    return 'OK'
+    return templates.TemplateResponse('result.html', result)
 	
-@app.route("/classify-url", methods=["POST", "GET"])
-def classify_url():
-    if request.method == 'POST':
-        url = request.form["url"]
-        if url != None:
-            response = requests.get(url)
-            preds = model_predict(response.content)
-            return preds
-    return 'OK'
+@app.route("/classify-url", methods=["POST"])
+async def classify_url():
+    url = request.form["url"]
+    response = await requests.get(url)
+	
+    results = await model_predict(response.content)
+    return templates.TemplateResponse('result.html', result)
     
 
-if __name__ == '__main__':
-    port = os.environ.get('PORT', 8008)
+@app.route("/")
+def form(request):
+    index_html = path/'static'/'index.html'
+    return HTMLResponse(index_html.open().read())
 
-    if "prepare" not in sys.argv:
-        app.run(debug=False, host='0.0.0.0', port=port)
+if __name__ == "__main__":
+    if "serve" in sys.argv: uvicorn.run(app = app, host="0.0.0.0", port=8080)
