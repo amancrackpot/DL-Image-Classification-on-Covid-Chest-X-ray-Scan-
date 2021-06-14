@@ -45,14 +45,14 @@ async def model_predict(img_b):
 
 
 @app.route('/upload', methods=["POST"])
-async def upload():
+async def upload(request):
     img_b = await request.files['file'].read()
     result = await model_predict(img_b)
 
     return templates.TemplateResponse('result.html', result)
 	
 @app.route("/classify-url", methods=["POST"])
-async def classify_url():
+async def classify_url(request):
     url = request.form["url"]
     response = await requests.get(url)
 	
