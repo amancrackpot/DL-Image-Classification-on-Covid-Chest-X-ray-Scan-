@@ -1,23 +1,29 @@
-FROM python:3.6-slim-stretch
+FROM python:3.7-slim-stretch
 
-RUN apt update && \
-    apt install -y python3-dev gcc
-
-WORKDIR app 
-# Install pytorch cpu version
+RUN apt-get update && apt-get install -y git python3-dev gcc \
+    && rm -rf /var/lib/apt/lists/*
 RUN pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
 
-ADD requirements.txt .
-RUN pip install -r requirements.txt
+COPY requirements.txt .
+RUN pip install --upgrade -r requirements.txt
 #pip install --no-cache-dir -r
 
-ADD src src
+COPY src src/
 
 # Run it once to trigger densenet download
-RUN python src/app.py prepare
+RUN python src/app.py 
 
 EXPOSE 8008
 
 # Start the server
 CMD ["python", "src/app.py", "serve"]
+
+
+  
+
+
+
+
+
+
 
