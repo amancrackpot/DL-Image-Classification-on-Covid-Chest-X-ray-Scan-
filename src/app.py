@@ -62,7 +62,7 @@ async def classify_url(request):
     
 @app.route("/")
 def form(request):
-    return templates.TemplateResponse('index.html')
+    return templates.TemplateResponse('index.html', request)
 
 if __name__ == "__main__":
     if "serve" in sys.argv: uvicorn.run(app = app, host="0.0.0.0", port=8080)
