@@ -4,7 +4,7 @@
 - Covid
 - Viral Pneumonia
 ### Simple Web App available at: https://xray-scan-classifier.onrender.com/
-![demoapp](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/webapp.gif)
+![demoapp](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/webap1p.gif)
 
 
 #### The code needed to train the model is detailed in here https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/covid-classification-resnet50.ipynb
