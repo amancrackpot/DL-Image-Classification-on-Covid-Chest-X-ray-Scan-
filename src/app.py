@@ -19,6 +19,11 @@ app = Starlette()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
 app.mount('/static', StaticFiles(directory='src/static'))
 
+async def get_bytes(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.read()
+
 async def setup_learner():
 #     await download_file(export_file_url, path/'models'/export_file_name)
     defaults.device = torch.device('cpu')
@@ -55,11 +60,9 @@ async def upload(request):
 	
 @app.route("/classify-url", methods=["POST"])
 async def classify_url(request):
-    url = request.url
-#    url =  data['url']
-    response = requests.get(url)
+    img_b = await get_bytes(request.query_params["url"])
 	
-    results = model_predict(response.content)
+    results = model_predict(img_b)
     return templates.TemplateResponse('result.html', {'request' : request, 'result' : result})
     
 @app.route("/")
