@@ -59,11 +59,10 @@ async def classify_url():
     results = await model_predict(response.content)
     return templates.TemplateResponse('result.html', result)
     
-
-@app.route('/', methods=['GET', "POST"])
-def index():
-    # Main page
-    return render_template('index.html')
+@app.route("/")
+def form(request):
+    index_html = path/'templates'/'index.html'
+    return HTMLResponse(index_html.open().read())
 
 if __name__ == "__main__":
     if "serve" in sys.argv: uvicorn.run(app = app, host="0.0.0.0", port=8080)
