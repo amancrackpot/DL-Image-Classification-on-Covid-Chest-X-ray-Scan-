@@ -30,7 +30,7 @@ learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
 loop.close()
 
 	
-async def model_predict(img_b):
+def model_predict(img_b):
     img = PILImage.create(BytesIO(img_b))
     outputs = learn.predict(img)[2].numpy()
     formatted_outputs = [f"{i*100:.2f}" for i in outputs]
@@ -48,7 +48,7 @@ async def model_predict(img_b):
 async def upload(request):
     data = await request.form()
     img_b = await (data["file"].read())
-    result = await model_predict(img_b)
+    result = model_predict(img_b)
 
     return templates.TemplateResponse('result.html', result)
 	
@@ -57,13 +57,12 @@ async def classify_url(request):
     url = request.form["url"]
     response = await requests.get(url)
 	
-    results = await model_predict(response.content)
+    results = model_predict(response.content)
     return templates.TemplateResponse('result.html', result)
     
 @app.route("/")
 def form(request):
-    index_html = path/'templates'/'index.html'
-    return HTMLResponse(index_html.open().read())
+    return templates.TemplateResponse('index.html')
 
 if __name__ == "__main__":
     if "serve" in sys.argv: uvicorn.run(app = app, host="0.0.0.0", port=8080)
