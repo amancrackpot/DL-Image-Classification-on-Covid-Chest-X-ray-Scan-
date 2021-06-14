@@ -32,14 +32,14 @@ loop.close()
 	
 def model_predict(img_b):
     img = PILImage.create(BytesIO(img_b))
-    outputs = learn.predict(img)[2].numpy()
-    formatted_outputs = [str(i)+'%' for i in np.round(outputs*100,2)]
+    label, _, outputs = learn.predict(img)
+    formatted_outputs = [str(i)+'%' for i in np.round(outputs.numpy()*100,2)]
     pred_probs = (classes, formatted_outputs)
 
     img_bytes  = img.to_bytes_format()
     img_data = base64.b64encode(img_bytes).decode()
 
-    result = {"probs":pred_probs, "image":img_data}
+    result = {"class":label, "probs":pred_probs, "image":img_data}
     return result
    
 
