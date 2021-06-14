@@ -57,7 +57,7 @@ async def upload(request):
 async def classify_url(request):
     data = await request.form()
     url =  data['url']
-    response = await requests.get(url)
+    response = requests.get(url)
 	
     results = model_predict(response.content)
     return templates.TemplateResponse('result.html', {'request' : request, 'result' : result})
