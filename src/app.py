@@ -33,7 +33,7 @@ loop.close()
 def model_predict(img_b):
     img = PILImage.create(BytesIO(img_b))
     outputs = learn.predict(img)[2].numpy()
-    formatted_outputs = outputs*100
+    formatted_outputs = [str(i)+'%' for i in np.round(outputs*100,2)]
     pred_probs = (classes, formatted_outputs)
 
     img_bytes  = img.to_bytes_format()
