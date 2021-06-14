@@ -50,7 +50,7 @@ async def upload(request):
     img_b = await (data["file"].read())
     result = model_predict(img_b)
 
-    return templates.TemplateResponse('result.html', result)
+    return templates.TemplateResponse('result.html', {'request' : request, 'result' : result})
 	
 @app.route("/classify-url", methods=["POST"])
 async def classify_url(request):
@@ -58,11 +58,11 @@ async def classify_url(request):
     response = await requests.get(url)
 	
     results = model_predict(response.content)
-    return templates.TemplateResponse('result.html', result)
+    return templates.TemplateResponse('result.html', {'request' : request, 'result' : result})
     
 @app.route("/")
 def form(request):
-    return templates.TemplateResponse('index.html', request)
+    return templates.TemplateResponse('index.html', {'request' : request})
 
 if __name__ == "__main__":
     if "serve" in sys.argv: uvicorn.run(app = app, host="0.0.0.0", port=8080)
