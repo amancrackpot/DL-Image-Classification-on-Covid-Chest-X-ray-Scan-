@@ -14,15 +14,16 @@ export_file_name = 'export.pkl'
 classes = ['Normal', 'Covid', 'Viral Pneumonia']
 path = Path(__file__).parent
 
+async def get_bytes(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.read()
+
 templates = Jinja2Templates(directory='src/templates')
 app = Starlette()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
 app.mount('/static', StaticFiles(directory='src/static'))
 
-async def get_bytes(url):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            return await response.read()
 
 async def setup_learner():
 #     await download_file(export_file_url, path/'models'/export_file_name)
