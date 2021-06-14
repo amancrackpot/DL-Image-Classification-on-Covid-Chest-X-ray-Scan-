@@ -65,7 +65,7 @@ async def classify_url(request):
     url = data["url"]
     img_b = await get_bytes(url)
 	
-    results = model_predict(img_b)
+    result = model_predict(img_b)
     return templates.TemplateResponse('result.html', {'request' : request, 'result' : result})
     
 @app.route("/")
