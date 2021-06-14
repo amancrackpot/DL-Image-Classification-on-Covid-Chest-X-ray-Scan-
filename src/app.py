@@ -58,7 +58,7 @@ async def upload(request):
 
     return templates.TemplateResponse('result.html', {'request' : request, 'result' : result})
 	
-@app.route("/classify-url", methods=["POST"])
+@app.route("/classify-url", methods=["GET"])
 async def classify_url(request):
     img_b = await get_bytes(request.query_params["url"])
 	
