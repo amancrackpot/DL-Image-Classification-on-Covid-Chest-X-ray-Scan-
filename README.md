@@ -1,8 +1,8 @@
 # Image-Classification-on-Covid-Chest-X-ray-Scan
-#### The goal of this system is to identify from a chest X-ray scan image the presence of the following :
-- Normal
-- Covid
-- Viral Pneumonia
+#### The goal of this system is to classify a chest X-ray scan(image) as one of the following :
+- Normal - This means lungs are healthy
+- Covid - This means lungs show presence of covid
+- Viral Pneumonia - This means lungs show presence of viral-pneumonia
 
 ### Simple Web App available at: https://xray-scan-classifier.onrender.com/
 ![demoapp](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/webap1p.gif)
