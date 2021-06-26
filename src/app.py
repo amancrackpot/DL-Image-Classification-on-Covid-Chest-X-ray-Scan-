@@ -24,17 +24,18 @@ app = Starlette()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
 app.mount('/static', StaticFiles(directory='src/static'))
 
+learn = load_learner(path/'saved'/export_file_name)
 
-async def setup_learner():
-#     await download_file(export_file_url, path/'models'/export_file_name)
-    defaults.device = torch.device('cpu')
-    learn = load_learner(path/'saved'/export_file_name)
-    return learn
+# async def setup_learner():
+# #     await download_file(export_file_url, path/'models'/export_file_name)
+#     defaults.device = torch.device('cpu')
+#     learn = load_learner(path/'saved'/export_file_name)
+#     return learn
 
-loop = asyncio.get_event_loop()
-tasks = [asyncio.ensure_future(setup_learner())]
-learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
-loop.close()
+# loop = asyncio.get_event_loop()
+# tasks = [asyncio.ensure_future(setup_learner())]
+# learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
+# loop.close()
 
 	
 def model_predict(img_b):
@@ -43,7 +44,7 @@ def model_predict(img_b):
     formatted_outputs = [str(i)+'%' for i in np.round(outputs.numpy()*100,2)]
     pred_probs = (classes, formatted_outputs)
 
-    img_bytes  = img.to_bytes_format()
+#     img_bytes  = img.to_bytes_format()
     img_data = base64.b64encode(img_b).decode()
 
     result = {"class":label, "probs":pred_probs, "image":img_data}
