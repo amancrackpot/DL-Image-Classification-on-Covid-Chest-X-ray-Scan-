@@ -1,8 +1,9 @@
 # Image-Classification-on-Covid-Chest-X-ray-Scan
-### In this I have tried to bulid a model that can classify a chest X-ray scan from under-mentioned classes:
+#### The goal of this system is to identify from a chest X-ray scan image the presence of the following :
 - Normal
 - Covid
 - Viral Pneumonia
+
 ### Simple Web App available at: https://xray-scan-classifier.onrender.com/
 ![demoapp](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/webap1p.gif)
 
