@@ -44,7 +44,7 @@ def model_predict(img_b):
     pred_probs = (classes, formatted_outputs)
 
     img_bytes  = img.to_bytes_format()
-    img_data = base64.b64encode(img_bytes).decode()
+    img_data = base64.b64encode(img_b).decode()
 
     result = {"class":label, "probs":pred_probs, "image":img_data}
     return result
