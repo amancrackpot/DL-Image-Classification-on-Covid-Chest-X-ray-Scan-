@@ -85,7 +85,7 @@ elif choice == 'URL':
 
 else:
     cont.write('Runs demo on a sample X-Ray Image having COVID')
-    url = 'https://storage.googleapis.com/kagglesdsdata/datasets/1357907/2258144/COVID-19_Radiography_Dataset/COVID-19_Radiography_Dataset/COVID/COVID-1.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=databundle-worker-v2%40kaggle-161607.iam.gserviceaccount.com%2F20210714%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20210714T134141Z&X-Goog-Expires=345599&X-Goog-SignedHeaders=host&X-Goog-Signature=6ed9b6b8bd6829ea3cfbcf875e190b73d88cd12c5375afc4c3269164ed84296f41b0b17c397b50ca0d24c5bac77d88c7440fc500729fe9077c301e28ca9f2ef16202be942fd5256fd60aea42b6e1fb1d49d46d1665348bfad4733159302bc85e540271b235fa556b63b20c2f52aeb66b898acc2dfcc8e0610125519da647dd9b2752609dea86aead5166dc32d3373a017091c40c77558170db2ca7012988ba498160e4e50700b92ec1980f1686725f0cbaea8b584d5399a316ff51985a59364b49912d83e5f7207e3b58ade3237bed492d89faf7407f7d6912d294caf086fc1517958efa12f845dd53b63a4aad38403925f78f13366a7c6f70faeac93d9e621f'
+    url = 'https://drive.google.com/uc?export=download&id=1HxT1amw9pXBByGpjPr2Erh6TfzmM0bsN'
     if btn:
         with st.spinner(text='Analyzing...'):
             content = requests.get(url).content
