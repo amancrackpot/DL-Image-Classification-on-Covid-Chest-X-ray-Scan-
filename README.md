@@ -7,10 +7,10 @@ Five times more deadly than the flu, COVID-19 causes significant morbidity and m
 - Viral Pneumonia i.e lungs show presence of viral-pneumonia
 
 ### Simple Web App available at: https://share.streamlit.io/amancrackpot/imageclassification_covid_x_ray_scans/main/src/app_streamlit.py
-![demoapp](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/covid.gif)
+![demoapp](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/covid.gif) ![SampleResults](https://github.com/tripathiGithub/ImageClassification_Covid_X_Ray_Scans/raw/main/Results/covid_sample.png)
 
 ### Sample Analysis Report 
-![SampleResults](https://github.com/tripathiGithub/ImageClassification_Covid_X_Ray_Scans/raw/main/Results/covid_sample.png)
+
 
 #### The code needed to train the model is detailed in here https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/covid-classification-resnet50.ipynb
 Deep Learning has been used to create this model. I have used Transfer Learning which involves loading a generic well trained image classification model for feature extraction and then adding a few layers as head so that it can be trained for our specific task. Apart from this, to train the system and get better results, modern deep learning practices have been used like data-augmentation , one-cycle-policy, discriminative-learning-rate, etc
