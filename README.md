@@ -7,9 +7,13 @@ Five times more deadly than the flu, COVID-19 causes significant morbidity and m
 - Viral Pneumonia i.e lungs show presence of viral-pneumonia
 
 ### Simple Web App available at: https://share.streamlit.io/amancrackpot/imageclassification_covid_x_ray_scans/main/src/app_streamlit.py
-![demoapp](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/covid.gif) ![SampleResults](https://github.com/tripathiGithub/ImageClassification_Covid_X_Ray_Scans/raw/main/Results/covid_sample.png)
 
-### Sample Analysis Report 
+<p align="center">
+  <img alt="Webapp" src="https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/covid.gif" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="Report" src="https://github.com/tripathiGithub/ImageClassification_Covid_X_Ray_Scans/raw/main/Results/covid_sample.png" width="45%">
+</p>
+
 
 
 #### The code needed to train the model is detailed in here https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/covid-classification-resnet50.ipynb
