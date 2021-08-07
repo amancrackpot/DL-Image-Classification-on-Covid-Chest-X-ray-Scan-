@@ -9,6 +9,7 @@ Five times more deadly than the flu, COVID-19 causes significant morbidity and m
 ### Simple Web App available at: https://share.streamlit.io/amancrackpot/imageclassification_covid_x_ray_scans/main/src/app_streamlit.py
 ![demoapp](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/covid.gif)
 
+### Sample Analysis Report 
 ![SampleResults](https://github.com/tripathiGithub/ImageClassification_Covid_X_Ray_Scans/raw/main/Results/covid_sample.png)
 
 #### The code needed to train the model is detailed in here https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/covid-classification-resnet50.ipynb
