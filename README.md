@@ -23,6 +23,6 @@ Five times more deadly than the flu, COVID-19 causes significant morbidity and m
 #### The code needed to train the model is detailed in here https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/covid-classification-resnet50.ipynb
 Deep Learning has been used to create this model. I have used Transfer Learning which involves loading a generic well trained image classification model for feature extraction and then adding a few layers as head so that it can be trained for our specific task. Apart from this, to train the system and get better results, modern deep learning practices have been used like data-augmentation , one-cycle-policy, discriminative-learning-rate, etc
 
-#### Dataset available at https://www.kaggle.com/tawsifurrahman/covid19-radiography-database
+#### Dataset available at https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/data
 ## Results on test data
 ![image](https://github.com/amancrackpot/ImageClassification_Covid_X_Ray_Scans/blob/main/Results/test_stats.png)
