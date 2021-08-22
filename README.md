@@ -1,6 +1,6 @@
 # Image-Classification-on-Covid-Chest-X-ray-Scan
 
-#### Web App Link: https://share.streamlit.io/amancrackpot/imageclassification_covid_x_ray_scans/main/src/app_streamlit.py
+#### WebApp Link: https://share.streamlit.io/amancrackpot/imageclassification_covid_x_ray_scans/main/src/app_streamlit.py
 
 Five times more deadly than the flu, COVID-19 causes significant morbidity and mortality. Like other pneumonias, pulmonary infection with COVID-19 results in inflammation and fluid in the lungs. COVID-19 looks very similar to other viral and bacterial pneumonias on chest radiographs, which makes it difficult to diagnose. Computer vision models to detect COVID-19 could help doctors provide a quick and confident diagnosis. As a result, patients could get the right treatment before the most severe effects of the virus take hold.
 
