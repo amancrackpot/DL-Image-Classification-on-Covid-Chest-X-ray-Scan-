@@ -20,7 +20,7 @@ if 'learn' not in st.session_state :
 
 def show_results(img):
     label, _, outputs = st.session_state.learn.predict(img)
-    pred_probs = list(outputs.numpy())
+    pred_probs = list(outputs.numpy()*100)
     df = pd.DataFrame({'Label':classes,'Confidence':pred_probs}).set_index('Label')
     
     col1, col2 = st.beta_columns(2)
@@ -31,7 +31,7 @@ def show_results(img):
             
     with col2:   
         st.subheader('Analysis Report')
-        st.table(df.style.format("{:.2%}"))
+        st.table(df)
         st.info(f'Predicted Label : {label}')
     
 padding = 0
